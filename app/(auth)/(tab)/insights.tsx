@@ -1,5 +1,6 @@
 import { View, Text, Image, Pressable, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useRouter } from "expo-router";
 import { icons } from "@/constants/icons";
 import { colors } from "@/constants/theme";
 import { formatCurrency } from "@/lib/utils";
@@ -25,13 +26,14 @@ const WEEK_DATA: DayBar[] = [
     { day: "Mon", amount: 24 },
     { day: "Tue", amount: 28 },
     { day: "Wed", amount: 20 },
-    { day: "Thr", amount: 40 },
+    { day: "Thu", amount: 40 },
     { day: "Fri", amount: 26 },
     { day: "Sat", amount: 18 },
     { day: "Sun", amount: 22 },
 ];
 
-const HIGHLIGHT_DAY = "Thr";
+const HIGHLIGHT_DAY = "Thu";
+const CHART_MARKS = [45, 35, 25, 5, 0];
 const CHART_MAX = 45;
 const CHART_HEIGHT = 90;
 
@@ -61,9 +63,17 @@ const RECENT_TRANSACTIONS: Transaction[] = [
 const WeeklyChart = () => {
     return (
         <View className="chart-wrap">
-            <View className="chart-axis">
-                {[45, 35, 25, 5, 0].map((mark) => (
-                    <Text key={mark} className="chart-axis-label">
+            <View className="chart-axis" style={{ height: CHART_HEIGHT }}>
+                {CHART_MARKS.map((mark) => (
+                    <Text
+                        key={mark}
+                        className="chart-axis-label"
+                        style={{
+                            position: "absolute",
+                            right: 0,
+                            bottom: (mark / CHART_MAX) * CHART_HEIGHT - 6,
+                        }}
+                    >
                         {mark}
                     </Text>
                 ))}
@@ -134,10 +144,12 @@ const TransactionRow = ({ tx }: { tx: Transaction }) => {
 };
 
 const insights = () => {
+    const router = useRouter();
+
     return (
         <SafeAreaView className="flex-1 bg-background">
             <View className="insights-header">
-                <Pressable hitSlop={12}>
+                <Pressable hitSlop={12} onPress={() => router.back()}>
                     <Image
                         source={icons.back}
                         className="insights-header-icon"
@@ -145,13 +157,12 @@ const insights = () => {
                     />
                 </Pressable>
                 <Text className="insights-title">Monthly Insights</Text>
-                <Pressable hitSlop={12}>
-                    <Image
-                        source={icons.menu}
-                        className="insights-header-icon"
-                        style={{ tintColor: colors.foreground }}
-                    />
-                </Pressable>
+                {/* Non-interactive for now — wire this up once a menu/actions sheet exists */}
+                <Image
+                    source={icons.menu}
+                    className="insights-header-icon"
+                    style={{ tintColor: colors.foreground }}
+                />
             </View>
 
             <ScrollView
