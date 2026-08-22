@@ -417,3 +417,125 @@
         @apply text-accent;
     }
 }
+
+/* ---- add these inside global.css, within the existing @layer components { ... } block ---- */
+
+.insights-header {
+    @apply flex-row items-center justify-between px-5 py-4;
+}
+
+.insights-header-icon {
+    @apply size-6;
+}
+
+.insights-title {
+    @apply text-xl font-sans-bold text-primary;
+}
+
+.chart-wrap {
+    @apply mb-2 flex-row;
+}
+
+.chart-axis {
+    @apply mr-2 h-24 justify-between pb-6;
+}
+
+.chart-axis-label {
+    @apply text-xs font-sans-medium text-muted-foreground;
+}
+
+.chart-bars {
+    @apply flex-1 flex-row items-end justify-between;
+}
+
+.chart-col {
+    @apply flex-1 items-center;
+}
+
+.chart-bar {
+    @apply w-3 rounded-full bg-primary;
+}
+
+.chart-bar-active {
+    @apply bg-accent;
+}
+
+.chart-day {
+    @apply mt-1 text-xs font-sans-medium text-muted-foreground;
+}
+
+.chart-pill {
+    @apply mb-1 rounded-full bg-accent/20 px-2 py-0.5;
+}
+
+.chart-pill-text {
+    @apply text-[10px] font-sans-bold text-accent;
+}
+
+.expense-card {
+    @apply my-5 rounded-2xl bg-muted p-4;
+}
+
+.expense-head {
+    @apply flex-row items-baseline gap-2;
+}
+
+.expense-label {
+    @apply text-base font-sans-bold text-primary;
+}
+
+.expense-month {
+    @apply text-sm font-sans-medium text-muted-foreground;
+}
+
+.expense-row {
+    @apply mt-1 flex-row items-baseline gap-2;
+}
+
+.expense-amount {
+    @apply text-2xl font-sans-extrabold text-primary;
+}
+
+.expense-badge {
+    @apply rounded-full bg-accent/15 px-2 py-0.5;
+}
+
+.expense-badge-text {
+    @apply text-xs font-sans-bold text-accent;
+}
+
+.txn-row {
+    @apply mb-3 flex-row items-center rounded-2xl p-3;
+}
+
+.txn-icon-wrap {
+    @apply mr-3 size-10 items-center justify-center rounded-full bg-primary/90;
+}
+
+.txn-icon {
+    @apply size-6 rounded;
+}
+
+.txn-copy {
+    @apply min-w-0 flex-1;
+}
+
+.txn-name {
+    @apply text-base font-sans-bold text-primary;
+}
+
+.txn-date {
+    @apply text-xs font-sans-semibold text-primary/70;
+}
+
+.txn-price-box {
+    @apply items-end;
+}
+
+.txn-price {
+    @apply text-base font-sans-bold text-primary;
+}
+
+.txn-billing {
+    @apply text-xs font-sans-semibold text-primary/70;
+}
